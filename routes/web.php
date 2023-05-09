@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\BookmarkdController;
+
 
 
 
@@ -21,9 +24,16 @@ Route::get('/', function () {
 });
 
 Route::resource('resume', ResumeController::class)->middleware('auth');
+Route::resource('upload', UploadController::class)->middleware('auth');
+Route::resource('bookmark', BookmarkdController::class)->middleware('auth');
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/resumes/{filename}', [ResumeController::class, 'download'])->name('resume.download');
+
+
+Route::get('/main-home', function () {return view('home_main');});
+Route::get('/try', function () {return view('rial');});
